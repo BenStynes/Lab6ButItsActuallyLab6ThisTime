@@ -6,7 +6,19 @@
 
 using namespace std;
 using namespace sf;
-
+enum class Shape
+{
+	triangle,
+	point,
+	lines,
+	line_strips,
+	triangle_strips,
+	quads,
+	quad_strips,
+	polygon,
+	line_loop,
+	triangle_fan
+};
 class Game
 {
 public:
@@ -20,7 +32,7 @@ private:
 	void update();
 	void draw();
 	void unload();
-
+	Shape yeet;
 	// // Uncomment for Part 2
 	// // ********************
 	// const int primatives;
