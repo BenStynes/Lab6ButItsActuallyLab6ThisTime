@@ -25,6 +25,7 @@ public:
 	Game();
 	~Game();
 	void run();
+	
 private:
 	Window window;
 	bool isRunning = false;
@@ -32,15 +33,16 @@ private:
 	void update();
 	void draw();
 	void unload();
-	Shape yeet;
+	Shape yeet; 
+	bool roatating{ false };
 	// // Uncomment for Part 2
 	// // ********************
-	// const int primatives;
+	 const int primatives;
 
-	//GLuint index;
-	//Clock clock;
-	//Time elapsed;
+	GLuint index;
+	Clock clock;
+	Time elapsed;
 
-	//float rotationAngle = 0.0f;
+	float rotationAngle = 0.0f;
 	// // ********************
 };
