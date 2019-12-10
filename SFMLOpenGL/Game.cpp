@@ -40,16 +40,33 @@ void Game::run()
 				switch (event.key.code)
 				{
 				case  sf::Keyboard::A:
-					glRotatef(rotationAngle, 0.0f, 0.0f, 1.0f);
+					glRotatef(5, 0.0f, 0.0f, 0.5f);
 					break;
-				case sf::Keyboard::B:
+				case  sf::Keyboard::D:
+					glRotatef(5, 0.0f, 0.0f, -0.5f);
+					break;
+				case sf::Keyboard::Right:
 					glTranslatef(1.0f, 0.0f, 0.0f);
 					break;
-				case sf::Keyboard::C:
+				case sf::Keyboard::Left:
+					glTranslatef(-1.0f, 0.0f, 0.0f);
+					break;
+
+				case sf::Keyboard::Up:
+					glScalef(1.0f, 1.0f, 0.5f);
+					break;
+				case sf::Keyboard::Down:
 					glScalef(1.0f, 1.0f, 2.0f);
 					break;
 				case sf::Keyboard::R:
 					glLoadIdentity();
+					break;
+				case sf::Keyboard::Space:
+					current++;
+					if (current > primatives)
+					{
+						current = 1;
+					}
 					break;
 				}
 			}
@@ -109,18 +126,18 @@ void Game::initialize()
 	glNewList(index + 2, GL_COMPILE);
 	glBegin(GL_TRIANGLE_FAN); {
 
-		glVertex3f(0.0, -2.0, -9.0);
+		glVertex3f(3.0, -1.0, -9.0);
 		glColor3f(1, 0, 0);
 
-		glVertex3f(-2.0, -3.0, -9.0);
+		glVertex3f(1.0, 1.0, -9.0);
 		glColor3f(0, 1, 0);
 
-		glVertex3f(2.0, -2.0, -9.0);
+		glVertex3f(2.0, 2.0, -9.0);
 		glColor3f(1, 0, 1);
 
-		glVertex3f(-2.0, 3.0, -9.0);
+		glVertex3f(3.0, 1.0, -9.0);
 		glColor3f(1, 1, 0);
-		glVertex3f(-2.0, -3.0, -9.0);
+		glVertex3f(3.5, 2.0, -9.0);
 	}
 
 	glEnd();
@@ -272,35 +289,8 @@ void Game::initialize()
 void Game::update()
 {
 
-	 
-	elapsed = clock.getElapsedTime();
-	
-	if (elapsed.asSeconds() >= 1.0f)
-	{
-		clock.restart();
-
-		if (!flip)
-		{
-			flip = true;
-			current++;
-			if (current > primatives)
-			{
-				current = 1;
-			}
-		}
-		else
-			flip = false;
-	}
-
-	if (flip)
-	{
-		rotationAngle += 0.005f;
-
-		if (rotationAngle > 360.0f)
-		{
-			rotationAngle -= 360.0f;
-		}
-	}
+			
+		
 
 
 	cout << "Update up" << endl;
